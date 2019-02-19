@@ -275,11 +275,11 @@ Return the first element to match with the condition
     console.log(car);
 ```
 
-## Class
+# Class
+
+## simple class
 
 ```java
-
-// simple class:
 
 	// to create a class we use the word "class" and the class neme the first letter musth by with uppercase by convention
 	class Car {
@@ -290,10 +290,9 @@ Return the first element to match with the condition
 	let car = new Car();
 ```
 
-```java
+## class constructor
 
-// class constructor:
-	
+```java
 	class Car{
 		constructor(id){
 			this.id = id;
@@ -304,10 +303,9 @@ Return the first element to match with the condition
 	console.log(car.id);
 ```
 
+## Methods
+
 ```java
-
-// Methods
-
 	class Car{
 		constructor(){
 			this.id = id;
@@ -322,9 +320,9 @@ Return the first element to match with the condition
 	console.log(Car.identify("!!!"));
 ```
 
-```java
+## Inheritance
 
-// Inheritance
+```java
 
 	// "extends" words is used for inheritance
 
@@ -347,9 +345,9 @@ Return the first element to match with the condition
 
 ```
 
-## Modules
+# Modules
 
-### Exporting modules
+## Exporting modules
 
 Create a new file and paste the following code
 
@@ -363,7 +361,7 @@ Create a new file and paste the following code
 
 "export" word will do the job
 
-### Importing modules
+## Importing modules
 
 In other file paste the following:
 
@@ -377,10 +375,10 @@ console.log( car.id );
 - The path could either relateive or absolute
 - The word "Car" in curly braces is the function to import from the other file
 
-## The window object
-### Timers
+# The window object
+## Timers
 
-#### setTimeout
+### setTimeout
 setTimeout(), it is a JavaScript function to acccessible globally and it will execute the function
 at one time in the future
 
@@ -402,7 +400,7 @@ In the above example "setTimeout" function receives two params:
 1. a function
 2. a number in miliseconds to wait before execute the function
 
-#### setInterval
+### setInterval
 setInterval(), execute the function repeatedly and works equal than the previos function, with
 the same number/type of arguments
 
@@ -418,9 +416,9 @@ let intervalId = setInterval( function(){
 clearTimeout(intervalId);
 ```
 
-### DOM elements
+## DOM elements
 
-#### Selecting DOM elements
+### Selecting DOM elements
 
 ```java
 document.getElementById("elementId");
@@ -451,7 +449,7 @@ Example:
 let element = document.getElementById("first");
 console.log(element);
 ```
-#### Modifying DOM elements
+### Modifying DOM elements
 In order to modify DOM elements first we need to select the element, e.g:
 
 ```java
@@ -467,3 +465,217 @@ element.classList.add("myClassName");
 element.style.color = "blue";
 ```
 
+# Errors in JavaScript
+## try, catch and finally
+
+E.g of throwing an error due to an undefined variable
+
+```java
+
+try{
+	let car = new Car;
+}
+catch(error){
+	console.log("error: ", error); // ReferenceError: newCar is not defined
+}
+finally{
+	console.log("this code always be executed");
+}
+```
+
+## Developer Defined Errors
+
+In the following example, the object `new Error` will be set to `error` variable in
+the catch block
+
+```java
+
+try{
+	// code here ...
+	throw new Error("my custom error");
+}
+catch(error){
+	console.log("error: ", error); // ReferenceError: newCar is not defined
+}
+finally{
+	console.log("this code always be executed");
+}
+```
+
+# HTTP Requests
+
+## Pre-setup
+
+| Mockapi is a webserver
+
+1. Goto `https://www.mockapi.io`
+2. Login with `Github`
+3. Create a new project in order to get an `end-point`
+
+end-point e.g:
+```text
+http(s)://5c6b15cbe85ff400140854da.mockapi.io/:endpoint
+```
+
+## Using JQuery
+
+### Install JQuery using terminal
+
+```bash
+npm install jquery
+```
+
+### Verify that JQuery was installed
+
+1. Open package.json
+2. Search for "jquery" and their version
+
+### Import JQuery module into the JavaScript code
+
+```java
+import $ from "jquery";
+```
+
+### Creates a local variable to handle it as a promise
+
+#### GET method
+
+```java
+let promise = $.get("http://5c6b15cbe85ff400140854da.mockapi.io/api/v1/users");
+```
+
+#### POST method
+
+```java
+let user = {
+    name: "someUser",
+    avatar: "someFile.jpeg"
+};
+
+let promise = $.post(
+	"http://5c6b15cbe85ff400140854da.mockapi.io/api/v1/users", user
+);
+```
+
+### Setup the handlers for the promise
+
+| Setup a handlers with arrows functions
+
+```java
+promise.then(
+	data => console.log("success", data),
+	error => console.log("error", error)
+);
+```
+
+# Forms
+
+## Preventing form submission
+
+Form `html` template
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>JavaScript Fundamentals</title>
+</head>
+<body>
+    <h3>JavaScript Fundamentals</h3>
+    <form action="/somepath" method="post" id="user-form">
+        <input name="user" placeholder="User Name" />
+        <span id="user-error"></span>
+        <br>
+        <input name="avatar-file" placeholder="Avatar File" />
+        <span id="avatar-error"></span>
+        <br>
+        <button type="submit">Submit</button>
+
+    </form>
+</body>
+</html>
+```
+
+JavaScript code
+
+```java
+let form = document.getElementById("user-form");
+
+form.addEventListener("submit", event => {
+    // prevent the browser from submitting the form
+    event.preventDefault();
+});
+```
+
+## Accessing form fields
+
+```java
+let form = document.getElementById("user-form");
+
+form.addEventListener("submit", event => {
+    // accessing form fields
+    let user = form.elements["user"];
+    let avatarFile = form.elements["avatar-file"];
+
+    console.log(user.value, avatarFile.value);
+    // prevent the browser from submitting the form
+    event.preventDefault();
+});
+```
+
+## Showing validation errors
+
+```java
+let form = document.getElementById("user-form");
+
+form.addEventListener("submit", event => {
+    // accessing form fields
+    let user = form.elements["user"];
+
+    // accessing user error
+    let userError = document.getElementById("user-error");
+
+    if (user.value.length < 4) {
+        userError.textContent = "Invalid Entry";
+        userError.style.color = "red";
+        userError.border.color = "red";
+        user.focus();
+
+    }
+    // prevent the browser from submitting the form
+    event.preventDefault();
+});
+```
+## Posting to webserver with a form
+
+### with JQuery
+
+```javaimport $ from "jquery";
+
+let form = document.getElementById("user-form");
+
+form.addEventListener("submit", event => {
+    // accessing form fields
+    let user = form.elements["user"];
+    let avatarFile = form.elements["avatar-file"];
+
+    // create a dictionary to post to server grabbing the values from the form
+    let posting = {
+        user: user.value,
+        avatarFile: avatarFile.value
+    };
+
+    // posting the data to the server
+    let promise = $.post("someUrl", posting);
+
+    // handle the server outputs with a promise
+    promise.then(
+        data => console.log("sucess: ", data),
+        error => console.log("error: ", error)
+    );
+
+    // prevent the browser from submitting the form
+    event.preventDefault();
+});
+```
