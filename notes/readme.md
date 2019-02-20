@@ -6,7 +6,7 @@
     + [How to start the server:](#how-to-start-the-server)
 - [Variables](#variables)
 - [Rest Parameters examples:](#rest-parameters-examples)
-- ["forEach" method is useful for iterate over a list](#foreach--method-is-useful-for-iterate-over-a-list)
+- ["forEach" method is useful for iterate over a list](#foreach-method-is-useful-for-iterate-over-a-list)
 - [Destructuring Arrays examples](#destructuring-arrays-examples-square-brackets)
 - [Destructuring objects examples](#destructuring-objects-examples-curly-braces)
 - [Spread Sintax examples:](#spread-sintax-examples)
