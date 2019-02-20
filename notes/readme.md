@@ -1,9 +1,26 @@
 
-# How to start the server:
+# Tools
+
+## NodeJS
+
+| For npm commands
+
+- [nodejs](https://nodejs.org/en)
+
+## Development environment webpack
+
+In order to run the development environment quickly install webpack
+
+- [webpack official webpage](https://webpack.js.org)
+- [webpack code in github](https://github.com/wbkd/webpack-starter)
+
+### How to start the server:
 
 ```bash
 npm start
 ```
+
+# Variables
 
 - "let" is for block scope and is prefered over "var" to create variables
 - Constants needs to be initialize
@@ -679,3 +696,13 @@ form.addEventListener("submit", event => {
     event.preventDefault();
 });
 ```
+# Security and Building for Production
+
+## Application Data Security
+- Don't store passwords, secrets or other sensitive information
+- Don't use global variables
+- Assume hackers can read your JS code and access all data sent to a browser
+
+A tip is to convert the code with the following online tool
+
+[JavaScript Obfuscator](http://javascriptobfuscator.com)
