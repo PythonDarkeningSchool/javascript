@@ -33,6 +33,50 @@ Install from the official website
 
 [nodeJS](https://nodejs.org)
 
+## Configuration files
+
+### task.json
+
+In root folder create the folder `.vscode` and inside that folder the file `tasks.json` with the following content
+
+```json
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "TypeScript Compiler",
+            "type": "shell",
+            "command": "tsc",
+            "args": [
+                "-p",
+                ".vscode/../vendingmachine/ts"
+            ],
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
+```
+
+### tsconfig.json
+
+Inside to your ts folder create the file `tsconfig.json` with the following content
+
+```json
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outFile": "../js/app.js",
+        "sourceMap": true
+    }
+}
+```
+
 
 
 # What is TypeScript
@@ -44,6 +88,8 @@ Install from the official website
 - Transpiles to a configurable JavaScript version
 - Uses ES6/ES7 sintax if possible
 - Adds typing
+
+*In my personal point of view, `TypeScript` it is a lenguage to enhance the main `JavaScript` lenguage making it kind of  `Java` like a typed lenguage.*
 
 ### Benefits of a typed language
 
@@ -57,7 +103,7 @@ Install from the official website
 
 ## The compiler
 
-The `TypeScript` compiler is called `tsc` (type script compiler), it convert TypeScript code to JavaScript.
+The `TypeScript` compiler is called *`tsc`* (type script compiler), it convert TypeScript code to JavaScript.
 
 The browsers does not understand TypeScript code, the compiler is available in many OS such as windows, mac and Linux.
 
@@ -118,13 +164,62 @@ variableName: typeOfVariable = <value>;
 
 
 
+## Imports
+
+```typescript
+/// <reference path="<path>/<file.ts>" />
+```
+
+
+
 ## Method or function structure
 
-```
+#### Without arguments
+
+```typescript
 someMethod(): returnTypeValue {
     // code here
 }
 ```
+
+#### With arguments
+
+```typescript
+someMethod(<variableName>: <dataType>): returnTypeValue {
+    // code here
+}
+```
+
+## Arrow functions
+
+| Arrow functions are also know as `lambdas` in others lenguages.
+
+#### Arrow functions as method
+
+```typescript
+methodName = (<variable>: <variableType>): returnType => {
+ 	// code here   
+}
+```
+
+#### Arrow functions in a variable
+
+| Just like in `JavaScript` it is also possible to have *arrow functions* directly in a variable
+
+```typescript
+let <variableName> = (<variable>: <variableType>): returnType => {
+ 	// code here   
+}
+```
+
+
+
+Considerations
+
+1. if the implementation of the function only consist in one line you do not have to use curly braces `{}`
+   1. When using an arrow function without curly braces `{}` you always have to *return* something
+2. If you have to use multiples lines you need the curly braces `{}`
+3. `*This*` keyword in arrow function always refers to the object (of the class) the function is in
 
 ### Reference to class atributtes
 
@@ -184,7 +279,96 @@ methodName(): {
 }
 ```
 
+## Encapsulation
+
+| Same as `Java`, in TypeScript we can use the encapsulation programming principle
+
+e.g in class
+
+```typescript
+// Defining the class
+class SomeClass {
+    private <dataType>: <variableName> = <value>;
+}
+
+// Instantiate the class
+let coin = new Quarter();
+coin.variableName; // an error occured because the variableName is only accesible within the class
+
+
+```
+
+## Getters and Setters
+
+| Similar than `java` we can define *getters* and *setters* to change the properties within a class
+
+For conviction the `getters` and `setters` names will be writen with *PascalCase* inlike the `methods`.
+
+In TypeScript the `getters` and `setters` has their own keyword unlike `java` which are:
+
+- get => to define a getter
+
+- set => to define a setter
+
+#### Getters
+
+```typescript
+class SomeClass {
+    private <dataType>: <variableName> = <value>;
+    // Define the getters
+    get Value(){
+        return this.<variableName>;
+    }
+}
+```
+
+#### Setters
+
+```typescript
+class SomeClass {
+    private <dataType>: <variableName> = <value>;
+    // Define the getters
+    set Value(<newValue>: <dataType>){
+        this.<variableName> = <newValue>;
+    }
+}
+```
 
 
 
+# Thid Party Libraries
+
+## Knockout.js
+
+Knockout.js is a data binding library for `JavaScript`
+
+[Download knockout library](https://knockoutjs.com/)
+
+### Configuration
+
+1. Create a folder inside `js` folder called `lib`
+2. Download `knockout` JavaScript library and copy it to the previous folder
+3. Open `index.html` and setup `knockout` before the `app.js` like this:
+
+```html
+<script src="js/lib/knockout-3.5.0.js"></script>
+<script src="js/app.js"></script>
+```
+
+### Types definitions
+
+
+
+TypeScript needs of the types definitions for `knockout`, please follow the next step in order to download and configurate it:
+
+1. Download ([index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/knockout/index.d.ts))[https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/knockout]
+2. Create a folder in `ts/typings`
+3. Rename the file downloaded to `knockout.d.ts` and place it in the create folder
+4. (if any) do a reference in the files needed, like this
+
+```typescript
+/// <reference path="typings/knockout.d.ts"/>
+```
+
+(knockout webpage)[https://www.npmjs.com/package/@types/knockout]
 
