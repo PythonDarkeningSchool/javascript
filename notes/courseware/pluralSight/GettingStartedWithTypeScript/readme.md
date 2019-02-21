@@ -361,7 +361,7 @@ Knockout.js is a data binding library for `JavaScript`
 
 TypeScript needs of the types definitions for `knockout`, please follow the next step in order to download and configurate it:
 
-1. Download ([index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/knockout/index.d.ts))[https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/knockout]
+1. Download[[index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/knockout/index.d.ts)](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/knockout)
 2. Create a folder in `ts/typings`
 3. Rename the file downloaded to `knockout.d.ts` and place it in the create folder
 4. (if any) do a reference in the files needed, like this
@@ -370,5 +370,5 @@ TypeScript needs of the types definitions for `knockout`, please follow the next
 /// <reference path="typings/knockout.d.ts"/>
 ```
 
-(knockout webpage)[https://www.npmjs.com/package/@types/knockout]
+[knockout webpage](https://www.npmjs.com/package/@types/knockout)
 
