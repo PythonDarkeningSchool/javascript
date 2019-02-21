@@ -8,7 +8,7 @@
 
 Visual Studio Code is recommended to use it
 
-[Visual Studio Code]: https://code.visualstudio.com
+[Visual Studio Code](https://code.visualstudio.com)
 
 ## Installing TypeScript
 
@@ -16,7 +16,7 @@ Install from the official website
 
 This step could apply to only download an editor
 
-[TypeScript webpage]: https://www.typescriptlang.org
+[TypeScript webpage](https://www.typescriptlang.org)
 
 ### Install from the CMD
 
@@ -31,7 +31,7 @@ npm install -g typescript
 
 Install from the official website
 
-[nodeJS]: https://nodejs.org
+[nodeJS](https://nodejs.org)
 
 
 
@@ -183,4 +183,8 @@ methodName(): {
     return "String"
 }
 ```
+
+
+
+
 
