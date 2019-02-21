@@ -22,3 +22,9 @@
 - Brittle
 - Complex
 - Ignored
+
+## How to make it work
+
+- Best practices
+- Robust tests
+- Do and learn
